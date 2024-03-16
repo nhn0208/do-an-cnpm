@@ -1,3 +1,5 @@
+'use client'
+
 import { Menu } from 'lucide-react'
 import requests from '@/lib/requests'
 
@@ -8,17 +10,15 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet"
-import SidebarItem, { SidebarItemProps } from "./sidebar-item"
+import SidebarItem from "./sidebar-item"
+import { useState } from 'react'
 
-// interface SidebarListProps {
-//     data : SidebarItemProps[]
-// }
 
 const SidebarList = (
-    // { data } : SidebarListProps
 ) => {
+  const [open, setOpen] = useState(false)
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger>
         <div className='bg-white dark:bg-slate-950 text-slate-950 dark:text-white border-slate-950 dark:border-white border rounded-full p-2 hover:opacity-80'>
           <Menu width={20} height={20}/>
@@ -30,7 +30,7 @@ const SidebarList = (
         </SheetHeader>
         <div className="p-6 flex flex-col overflow-auto border-y-[2px] ">
           {Object.entries(requests).map(([key, {title,url}]) => (
-            <SidebarItem key={key} title={title} href={url} />
+            <div onClick={()=> setOpen(!open)}><SidebarItem key={key} title={title} href={url} /></div>
           ))}
         </div>
       </SheetContent>
