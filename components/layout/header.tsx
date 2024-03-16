@@ -9,7 +9,7 @@ import Darkmode from '../switch-darkmode'
 const Header = () => {
   return (
     
-      <div className='w-full fixed top-0 bg-black py-6 px-4 md:px-8 lg:px-16'>
+      <div className='w-full fixed top-0 bg-black py-6 px-4 md:px-8 lg:px-16 z-50'>
           <div className='flex items-center justify-between'>
               <Logo />
               <SearchBar />

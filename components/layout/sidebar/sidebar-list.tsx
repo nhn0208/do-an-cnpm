@@ -1,4 +1,5 @@
 import { Menu } from 'lucide-react'
+import requests from '@/lib/requests'
 
 import {
     Sheet,
@@ -9,12 +10,12 @@ import {
 } from "@/components/ui/sheet"
 import SidebarItem, { SidebarItemProps } from "./sidebar-item"
 
-interface SidebarListProps {
-    data : SidebarItemProps[]
-}
+// interface SidebarListProps {
+//     data : SidebarItemProps[]
+// }
 
 const SidebarList = (
-    { data } : SidebarListProps
+    // { data } : SidebarListProps
 ) => {
   return (
     <Sheet>
@@ -28,8 +29,8 @@ const SidebarList = (
           <SheetTitle className='text-[20px]'>Menu</SheetTitle>
         </SheetHeader>
         <div className="p-6 flex flex-col overflow-auto border-y-[2px] ">
-          {data.map(item => (
-            <SidebarItem key={item.title} title={item.title} href={item.href} children={ item.children } />
+          {Object.entries(requests).map(([key, {title,url}]) => (
+            <SidebarItem key={key} title={title} href={url} />
           ))}
         </div>
       </SheetContent>

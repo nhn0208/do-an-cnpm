@@ -8,12 +8,10 @@ import { useTheme } from 'next-themes'
 const Darkmode = () => {
   const {theme, setTheme} = useTheme();
   let saveTheme 
-  if ( typeof window !== 'undefined') {
-    saveTheme = localStorage.getItem('theme');
-  }
   const [ isChecked, setChecked] = useState(saveTheme === 'dark' ? true : false);
 
   useEffect(()=>{
+    saveTheme = localStorage.getItem('theme')
     setTheme(isChecked === true ? 'dark' : 'light')
   },[isChecked])
 

@@ -29,6 +29,7 @@ import { Label } from "./ui/label"
 import { Button } from "./ui/button"
 import { Checkbox } from "./ui/checkbox"
 import { GoogleSignInButton, GoogleSignOutButton } from "./auth-button"
+import Darkmode from "./switch-darkmode"
 
 
 const UserButton = () => {
@@ -41,7 +42,9 @@ const UserButton = () => {
                 <Image src={session.user.image || ''} alt='' width={40} height={40} className="rounded-full"/>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="p-0 pt-2">
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuLabel>
+                    <Link href={'/myaccount'}>My Account</Link>
+                </DropdownMenuLabel>
                 <DropdownMenuItem className="p-0">
                     <GoogleSignOutButton />
                 </DropdownMenuItem>
