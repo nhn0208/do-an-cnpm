@@ -30,7 +30,7 @@ const SidebarList = (
         </SheetHeader>
         <div className="p-6 flex flex-col overflow-auto border-y-[2px] ">
           {Object.entries(requests).map(([key, {title,url}]) => (
-            <div onClick={()=> setOpen(!open)}><SidebarItem key={key} title={title} href={url} /></div>
+            <div key={key} onClick={()=> setOpen(!open)}><SidebarItem  title={title} href={url} /></div>
           ))}
         </div>
       </SheetContent>
