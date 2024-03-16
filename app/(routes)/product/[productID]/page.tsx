@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 
 import { ProductProps } from "@/lib/interface"
-import { fetchProductID } from "@/app/api/product/[productID]/route"
+import { fetchProductID } from "@/app/api/product/route"
 
 const ProductIDPage = ({params}:{params: {productID: string}}) => {
   const [product, setProduct] = useState<any>();
