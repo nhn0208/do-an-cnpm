@@ -22,6 +22,9 @@ const config = {
       },
     },
     extend: {
+      boxShadow: {
+        '3xl': '2px 5px 10px 3px rgba(0, 0, 0, 0.6)',
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
