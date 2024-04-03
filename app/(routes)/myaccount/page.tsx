@@ -1,24 +1,37 @@
 'use client'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SignIn from "@/components/sign-in"
 import SignUp from "@/components/sign-up"
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { useSession } from "next-auth/react";
+import { ProfileProps } from "@/lib/interface";
+import { isLogin } from "@/app/api/auth/route";
 const AccountPage = () => {
-  const { data : session } = useSession();
+  const router = useRouter();
+    //const { data: session } = useSession();
+    //console.log("Session: ",session);
+    const [profile,setProfile] = useState<ProfileProps>({});
+    useEffect(()=>{
+        const fetchProfile = async () => {
+            const res = await isLogin();
+            setProfile(res);
+            
+        }
+        fetchProfile();
+
+        return () => {}
+    })
 
   
-  const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams();
   const search = searchParams.get('action')
   const [ isSignUp , setSignUp] = useState( search === 'register' ? true : false || true);
 
-  if (session?.user) return (
+  if (profile) return (
     <div>
-      {session.user.name}
+      {profile.name}
     </div>
   )
   return (

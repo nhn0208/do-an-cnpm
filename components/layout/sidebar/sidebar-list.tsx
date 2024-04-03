@@ -1,7 +1,7 @@
 'use client'
 
 import { Menu } from 'lucide-react'
-import requests from '@/lib/requests'
+import { fetchBrand } from '@/app/api/product/filter/route'
 
 import {
     Sheet,
@@ -11,12 +11,26 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet"
 import SidebarItem from "./sidebar-item"
-import { useState } from 'react'
+import { Key, useEffect, useState } from 'react'
 
+interface SidebarProps {
+  brand : string
+}
 
 const SidebarList = (
+  
 ) => {
   const [open, setOpen] = useState(false)
+  const [list, setList] = useState<SidebarProps[] | null>([])
+
+  useEffect(()=>{
+    const fetchData = async () => {
+      const response = await fetchBrand();
+      setList(response)
+    }
+    fetchData();
+  },[])
+
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger>
@@ -29,9 +43,10 @@ const SidebarList = (
           <SheetTitle className='text-[20px]'>Menu</SheetTitle>
         </SheetHeader>
         <div className="p-6 flex flex-col overflow-auto border-y-[2px] ">
-          {Object.entries(requests).map(([key, {title,url}]) => (
-            <div key={key} onClick={()=> setOpen(!open)}><SidebarItem  title={title} href={url} /></div>
-          ))}
+         <div  onClick={()=> setOpen(!open)}> <SidebarItem brand='All' /></div>
+          {list ? list.map((brand,index) => (
+            <div key={index} onClick={()=> setOpen(!open)}><SidebarItem  brand={brand.brand} /></div>
+          )) : null}
         </div>
       </SheetContent>
     </Sheet>

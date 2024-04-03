@@ -28,6 +28,10 @@ const nextConfig = {
         },
         {
           protocol: 'https',
+          hostname: 'news.harvard.edu'
+        },
+        {
+          protocol: 'https',
           hostname: 'img01.ztat.net'
         },
         {
@@ -57,6 +61,10 @@ const nextConfig = {
         {
           protocol: 'https',
           hostname: 'lh5.googleusercontent.com'
+        },
+        {
+          protocol: 'https',
+          hostname: 'i.pinimg.com'
         },
       ],
     },

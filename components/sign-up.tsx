@@ -1,13 +1,18 @@
+'use client'
+
+import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { cn } from '@/lib/utils'
 
 interface SignUpProps {
     classname?: string
 }
 
 const SignUp = ( { classname } : SignUpProps) => {
+  const [checked,setChecked] = useState(false)
   return (
     <div className={`${classname}`}>
         <div className='py-5'>
@@ -22,7 +27,11 @@ const SignUp = ( { classname } : SignUpProps) => {
               <div className='p-5 space-y-8 pb-12 border border-slate-950 dark:border-slate-800 shadow-md'>
                 <p className='text-xl font-semibold text-slate-950 dark:text-white text-balance'>For security, use of Google's reCAPTCHA service is required which is subject to the Google <span>Privacy Policy</span> and <span>Terms of Use</span>.</p>
                 <div className='flex items-center space-x-2'>
-                  <Checkbox id='confirm-policy'/>
+                  <Checkbox id='confirm-policy' 
+                  checked={checked} 
+                  onCheckedChange={()=> setChecked(prev=> !prev)}
+                  className={cn(!checked ? "border-red-600":"")}
+                  />
                   <Label htmlFor='confirm-policy'>I agree to these terms (required).</Label>
                 </div>
               </div>

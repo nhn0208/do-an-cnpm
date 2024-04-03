@@ -4,7 +4,7 @@ import Link from "next/link"
 import { User2Icon } from "lucide-react"
 import Image from "next/image"
 import { useSession } from "next-auth/react"
-
+import { useEffect, useState } from "react"
 
 import {
     Sheet,
@@ -29,24 +29,65 @@ import { Label } from "./ui/label"
 import { Button } from "./ui/button"
 import { Checkbox } from "./ui/checkbox"
 import { GoogleSignInButton, GoogleSignOutButton } from "./auth-button"
-import Darkmode from "./switch-darkmode"
+import { isLogin, login, logout } from "@/app/api/auth/route"
+import { ProfileProps } from "@/lib/interface"
+import { redirect } from "react-router"
+import { useRouter } from "next/navigation"
+
 
 
 const UserButton = () => {
-    const { data: session } = useSession();
+    const router = useRouter();
+    //const { data: session } = useSession();
     //console.log("Session: ",session);
+    const [profile,setProfile] = useState<ProfileProps | null>({});
+    const [isClick,setClick] = useState(false)
+    useEffect(()=>{
+        const fetchProfile = async () => {
+            const res = await isLogin();
+            setProfile(res);
+            router.refresh();
+        }
+        fetchProfile();
+        
+    },[isClick])
+
+    const [username,setUsername] = useState('')
+    const [password,setPassword] = useState('')
+
+    const handleLogin = async () => {
+        await login({
+            email: username,
+            password: password
+        })
+        setClick(!isClick)
+    }
+
+    const handleLogout = async () => {
+        await logout()
+        setClick(!isClick)
+        
+    }
     
-    if ( session?.user) return (
+    if ( profile) return (
         <DropdownMenu>
             <DropdownMenuTrigger>
-                <Image src={session.user.image || ''} alt='' width={40} height={40} className="rounded-full"/>
+                <Image src={profile.image || '/google.png'} alt='' width={40} height={40} className="rounded-full" style={{width: "40px", height: "40px"}}/>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="p-0 pt-2">
                 <DropdownMenuLabel>
                     <Link href={'/myaccount'}>My Account</Link>
                 </DropdownMenuLabel>
                 <DropdownMenuItem className="p-0">
-                    <GoogleSignOutButton />
+                    <Button 
+                    onClick={()=> {
+                        handleLogout();
+                        setUsername('')
+                        setPassword('')
+                    }}
+                    className="w-full p-0 pl-2 justify-start border-0 text-left bg-white dark:bg-slate-950 text-slate-950 dark:text-white hover:bg-slate-200 dark:hover:bg-slate-900">
+                        <p>Sign Out</p>  
+                    </Button>
                 </DropdownMenuItem>
                 
             </DropdownMenuContent>
@@ -66,22 +107,27 @@ const UserButton = () => {
             </SheetHeader>
             <div className="border-y-[2px] py-6">
                 <div>
-                    <Label htmlFor="email" className="text-slate-950 dark:text-white">
+                    <Label 
+                    htmlFor="email" className="text-slate-950 dark:text-white">
                         Email
                     </Label>
-                    <Input id="email" className="text-slate-950 dark:text-white" />
+                    <Input id="email" value={username} className="text-slate-950 dark:text-white" onChange={event => setUsername(event.target.value)} />
                 </div>
                 <div>
                     <Label htmlFor="password" className="text-slate-950 dark:text-white" >
                         Password
                     </Label>
-                    <Input id="password" type="password" className="text-slate-950 dark:text-white"/>
+                    <Input id="password" value={password} type="password" className="text-slate-950 dark:text-white" onChange={event => setPassword(event.target.value)}/>
                 </div>
                 <div>
                     <GoogleSignInButton />
                 </div>
                 <SheetClose asChild>
-                    <Button className="w-full rounded-full bg-black dark:bg-slate-950 mt-4 text-white dark:text-white" type="submit">LOG IN</Button>
+                    <Button 
+                    onClick={()=> handleLogin()}
+                    className="w-full rounded-full bg-black dark:bg-slate-950 mt-4 text-white dark:text-white hover:bg-green-600 dark:hover:bg-green-600" type="submit">
+                        LOG IN
+                    </Button>
                 </SheetClose>
             </div>
             <div className="w-full py-4 flex item-center justify-between">

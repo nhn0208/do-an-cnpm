@@ -1,21 +1,34 @@
 import axios from 'axios';
+import { ProductProps } from '@/lib/interface';
+import * as httpRequest from '@/lib/requests'
 
-export const fetchProductData = async () => {
+export const fetchProductData = async ({brand,type}: ProductProps) => {
+  
   try {
-    const url = 'http://localhost:4000/api/v1/item/'
-    const  response = await axios.get(url);
-    return response.data.data;
+    let path = 'item'
+    if (!!brand && brand != "All" || !!type) {
+      path += '?'
+    }  
+    if (brand != '' && brand != 'All') {
+      path += `brand=${brand}`
+    }
+    if (!!type) {
+      path += `&type=${type}`
+    }
+    //console.log(url);
+    
+    const  response = await httpRequest.get(path);
+    return response.data;
   } catch (error) {
-    console.error('Error fetching user data:', error);
-    throw error; // Rethrow the error for handling in components
+    console.log('Error fetching user data:', error);
   }
 };
 
 export const fetchProductID =  async (id:number) => {
   try {
-    const url = `http://localhost:4000/api/v1/item/detail/${id}`
-    const response = await axios.get(url);
-    return response.data.data;
+    const path = `item/detail/${id}`
+    const response = await httpRequest.get(path);
+    return response.data;
   } catch (error) {
     console.log(error);
   }

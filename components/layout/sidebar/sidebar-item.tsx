@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import SidebarSubList from "./sidebar-sub-list";
+import { useRouter, useSearchParams } from "next/navigation";
 
 // interface ItemProps {
 //   title: string;
@@ -10,23 +11,16 @@ import SidebarSubList from "./sidebar-sub-list";
 // }
 
 export interface SidebarItemProps {
-    title: string;
-    href?: string;
-    children?: SidebarItemProps[]
+    brand: string
 }
 
-const SidebarItem = ({title,href,children}:SidebarItemProps) => {
+const SidebarItem = ({brand}:SidebarItemProps) => {
+  
   return (
     <div className="pb-8">
-      {!!children ? (
-        <div className="lg:text-base lg:tracking-tight text-sm uppercase font-bold group flex items-center gap-x-2 text-slate-950 dark:text-white">
-          <SidebarSubList title={title} data={children} />
-        </div>
-      ):(
-        <div className="lg:text-base lg:tracking-tight text-sm uppercase font-bold group flex items-center gap-x-2">
-          <Link href={`${href}`} className="text-slate-950 dark:text-white hover:opacity-80">{title}</Link>         
-        </div>
-      )}
+      <div className="lg:text-base lg:tracking-tight text-sm uppercase font-bold group flex items-center gap-x-2">
+        <Link href={`http://localhost:3000/product?brand=${brand}`} className="text-slate-950 dark:text-white hover:opacity-80">{brand}</Link>         
+      </div>
     </div>
     
   )
