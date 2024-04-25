@@ -8,9 +8,11 @@ import { Button } from './ui/button'
 import { CartProps } from '@/lib/interface'
 import { decreaseProductCart, deleteProductCart, fetchCart, increaseProductCart } from '@/app/api/cart/route'
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet'
+import PaymentButton from './payment/payment-button'
 
 const CartButton = () => {
     const [cartList,setCartList] = useState<CartProps[] | null>([]);
+    const [openSheet,setOpenSheet] = useState<boolean>(false);
 
     const increaseCart = async (id:number | undefined) => {
         await increaseProductCart(id)
@@ -32,9 +34,10 @@ const CartButton = () => {
         fetchData()
     })
   return (
-    <Sheet>
+    <Sheet open={openSheet} onOpenChange={setOpenSheet}>
         <SheetTrigger>
-            <div className="bg-white dark:bg-slate-950 text-slate-950 dark:text-white border-slate-950
+            <div 
+            className="bg-white dark:bg-slate-950 text-slate-950 dark:text-white border-slate-950
              dark:border-white border rounded-full px-2 py-[6px] hover:opacity-80">
                 <ShoppingBag width={20} height={24} />
             </div>
@@ -77,6 +80,7 @@ const CartButton = () => {
                     </div>
                 )) : null}
             </div>
+            <div onClick={()=> setOpenSheet(!openSheet)}><PaymentButton/></div>
         </SheetContent>
         
     </Sheet>

@@ -35,7 +35,7 @@ const AccountPage = () => {
     </div>
   )
   return (
-    <div className='w-full text-center'>
+    <div className='w-full flex flex-col items-center'>
       <SignUp classname={cn([ isSignUp ? 'block': 'hidden','animate-fade-in'])}/>
       <SignIn classname={cn([ !isSignUp ? 'block': 'hidden','animate-fade-in'])}/>
       { isSignUp 

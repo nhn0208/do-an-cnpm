@@ -4,7 +4,6 @@ import React, { useState } from 'react'
 import { Button } from '../ui/button'
 import { addProductID } from '@/app/api/cart/route'
 
-
 const AddCartButton = ({ id } : { id : string}) => {
     const [message, setMessage] = useState("");
     const addHandle = async () => {

@@ -23,7 +23,7 @@ const ProductPage = () => {
   useEffect(()=>{
     const fetchData = async () => {
       setLoading(true)
-      const productData: [] = await fetchProductData({brand:searchBrand,type: searchType});
+      const productData: [] = await fetchProductData({brand:searchBrand,type: searchType})
       setProducts(productData)
     }
     fetchData()

@@ -1,6 +1,7 @@
 //'use server'
 
 import * as httpRequest from '@/lib/requests'
+import { notification } from 'antd';
 import { useContext } from "react";
 
 export const addProductID = async (id :number) => {
@@ -15,11 +16,19 @@ export const addProductID = async (id :number) => {
     // })
     // console.log(loginResponse.data);
 
-    const cartResponse = await httpRequest.post(cartPath,
-    );
-    console.log(cartResponse);
+    const cartResponse = await httpRequest.post(cartPath)
+    .then ((res)=> {
+      notification.open({
+        message: res.message,
+        description:'',
+        placement: 'bottomRight',
+        type: 'success',
+    });
+    })
+    // console.log(cartResponse);
     
-    return cartResponse.data
+    // return cartResponse.data
+    
     
   }catch ( error) {
     console.log("Error: ", error);
