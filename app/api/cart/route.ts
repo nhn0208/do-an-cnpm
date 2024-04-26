@@ -2,13 +2,12 @@
 
 import * as httpRequest from '@/lib/requests'
 import { notification } from 'antd';
-import { useContext } from "react";
 
-export const addProductID = async (id :number) => {
+export const addProductId = async (id_item_detail :number) => {
   //const [state, dispatch] = useContext(StoreContext);
   
   //const loginPath = 'auth/login'
-  const cartPath = `cart/add/${id}`
+  const cartPath = `cart/add/${id_item_detail}`
   try {
     // const loginResponse = await httpRequest.post(loginPath,{
     //   "email":"phammanhbeo2001@gmail.com",
@@ -17,9 +16,9 @@ export const addProductID = async (id :number) => {
     // console.log(loginResponse.data);
 
     const cartResponse = await httpRequest.post(cartPath)
-    .then ((res)=> {
+    .then (()=> {
       notification.open({
-        message: res.message,
+        message: "Đã thêm vào giỏ hàng",
         description:'',
         placement: 'bottomRight',
         type: 'success',

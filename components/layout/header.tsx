@@ -2,7 +2,7 @@ import React from 'react'
 import Logo from '@/components/logo'
 import SearchBar from '@/components/search-bar'
 import UserButton from '@/components/user-button'
-import CartButton from '../cart-button'
+import CartButton from '@/components/cart/cart-button'
 import Sidebar from './sidebar/sidebar'
 import Darkmode from '../switch-darkmode'
 

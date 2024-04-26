@@ -13,8 +13,10 @@ import FilterBar from '@/components/product/filter-bar'
 
 const ProductPage = () => {
   const searchParmas =  useSearchParams();
-  const searchBrand = searchParmas.get('brand');
-  const searchType = searchParmas.get('type')
+  const searchBrand = searchParmas.get('id_brand');
+  const searchType = searchParmas.get('id_type');
+  const searchOrigin = searchParmas.get('id_origin');
+  const searchMaterial = searchParmas.get('id_material');
   
   const [ products, setProducts] = useState<ProductProps [] | null>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -23,7 +25,7 @@ const ProductPage = () => {
   useEffect(()=>{
     const fetchData = async () => {
       setLoading(true)
-      const productData: [] = await fetchProductData({brand:searchBrand,type: searchType})
+      const productData: [] = await fetchProductData({id_brand: Number(searchBrand) ,id_type: Number(searchType)})
       setProducts(productData)
     }
     fetchData()
@@ -42,7 +44,7 @@ const ProductPage = () => {
         <FilterBar searchBrand={searchBrand} searchType={searchType}/>
       <div className='flex justify-center w-full flex-wrap px-10'>
         { products ? products.map((product,index) => (
-          <ProductCard key={index} id_item={product.id_item} title={product.name} image={product.image} price={product.price}/>
+          <ProductCard key={index} id_item={product.id_item} title={product.name} image={product.image}/>
         )) : (
           <div>No product</div>
         )}

@@ -1,19 +1,24 @@
-import axios from 'axios';
 import { ProductProps } from '@/lib/interface';
 import * as httpRequest from '@/lib/requests'
 
-export const fetchProductData = async ({brand,type}: ProductProps) => {
+export const fetchProductData = async ({id_brand,id_material,id_origin,id_type}: ProductProps) => {
   
   try {
     let path = 'item'
-    if (!!brand && brand != "All" || !!type) {
+    if (id_brand || id_type || id_material || id_origin) {
       path += '?'
     }  
-    if (brand != '' && brand != 'All') {
-      path += `brand=${brand}`
+    if (id_brand ) {
+      path += `id_brand=${id_brand}`
     }
-    if (!!type) {
-      path += `&type=${type}`
+    if (id_type) {
+      path += `&id_type=${id_type}`
+    }
+    if (id_material) {
+      path += `&id_material=${id_material}`
+    }
+    if (id_origin) {
+      path += `&id_origin=${id_origin}`
     }
     //console.log(url);
     
@@ -21,15 +26,5 @@ export const fetchProductData = async ({brand,type}: ProductProps) => {
     return response.data;
   } catch (error) {
     console.log('Error fetching user data:', error);
-  }
-};
-
-export const fetchProductID =  async (id:number) => {
-  try {
-    const path = `item/detail/${id}`
-    const response = await httpRequest.get(path);
-    return response.data;
-  } catch (error) {
-    console.log(error);
   }
 };

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { cn } from "@/lib/utils"
 import { usePathname, useRouter } from "next/navigation"
 
-import { fetchType } from "@/app/api/product/filter/route"
 import { Button } from "@/components/ui/button"
 import {
   Popover,
@@ -10,9 +9,10 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { Check, ChevronsUpDown } from 'lucide-react'
+import { getAllType } from "@/app/api/type/route"
 
 interface TypeProps {
-    type : string
+    name : string
 }
 
 const FilterBar = ( 
@@ -26,7 +26,9 @@ const FilterBar = (
 
     useEffect(()=>{
         const fetchData = async () => {
-            const data : [] = await fetchType();
+            const data : [] = await getAllType();
+            //console.log(data);
+            
             setTypeList(data)
         }
         fetchData();
@@ -49,8 +51,8 @@ const FilterBar = (
             aria-expanded={open}
             className="w-[200px] justify-between"
           >
-            {typeList.find((type) => type.type === searchType)?.type === searchType
-              ? typeList.find((type) => type.type === searchType)?.type
+            {typeList.find((type) => type.name === searchType)?.name === searchType
+              ? typeList.find((type) => type.name === searchType)?.name
               : "Select type..."}
             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
           </Button>
@@ -60,17 +62,17 @@ const FilterBar = (
                 <div className='flex items-center pl-2 py-2'
                   key={index}
                   onClick={() => {
-                    setValue(type.type === value ? "" : type.type)
+                    setValue(type.name === value ? "" : type.name)
                     setOpen(false)
                   }}
                 >
                   <Check
                     className={cn(
                       "mr-2 h-4 w-4",
-                      type.type === searchType ? "opacity-100" : "opacity-0"
+                      type.name === searchType ? "opacity-100" : "opacity-0"
                     )}
                   />
-                  {type.type}
+                  {type.name}
                 </div>
               )): null}
         </PopoverContent>

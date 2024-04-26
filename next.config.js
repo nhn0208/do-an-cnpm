@@ -36,10 +36,6 @@ const nextConfig = {
         },
         {
           protocol: 'https',
-          hostname: 'cdn.authentic-shoes.com'
-        },
-        {
-          protocol: 'https',
           hostname: 'assets.adidas.com'
         },
         {
@@ -65,6 +61,38 @@ const nextConfig = {
         {
           protocol: 'https',
           hostname: 'i.pinimg.com'
+        },
+        {
+          protocol: 'https',
+          hostname: 'www.cln.com.ph'
+        },
+        {
+          protocol: 'https',
+          hostname: 'www.pedroshoes.com'
+        },
+        {
+          protocol: 'https',
+          hostname: 'eu.stuartweitzman.com'
+        },
+        {
+          protocol: 'https',
+          hostname: 'cdn.saksfifthavenue.com'
+        },
+        {
+          protocol: 'https',
+          hostname: 'cdn-images.farfetch-contents.com'
+        },
+        {
+          protocol: 'https',
+          hostname: 'media.gucci.com'
+        },
+        {
+          protocol: 'https',
+          hostname: 'assets.herringshoes.co.uk'
+        },
+        {
+          protocol: 'https',
+          hostname: 'cdn.authentic-shoes.com'
         },
       ],
     },

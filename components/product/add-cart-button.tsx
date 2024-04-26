@@ -1,13 +1,11 @@
 'use client'
 
-import React, { useState } from 'react'
 import { Button } from '../ui/button'
-import { addProductID } from '@/app/api/cart/route'
+import { addProductId } from '@/app/api/cart/route'
 
-const AddCartButton = ({ id } : { id : string}) => {
-    const [message, setMessage] = useState("");
+const AddCartButton = ({id_item_detail} : { id_item_detail : number} ) => {
     const addHandle = async () => {
-        await addProductID(parseInt(id))
+        await addProductId(id_item_detail)
     }
   return (
     <div>
