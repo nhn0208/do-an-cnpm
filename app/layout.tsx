@@ -4,7 +4,6 @@ import './globals.css'
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
 import { ThemeProvider } from '@/components/theme-provider'
-import { NextAuthProvider } from "./providers";
 
 
 export const metadata: Metadata = {
@@ -21,11 +20,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning={true}>
       <body>
         <ThemeProvider attribute='class' defaultTheme='system'>
-          <NextAuthProvider>
             <Header/>
             <div className=' mt-[114px]'>{children}</div>
             <Footer/>
-          </NextAuthProvider>
         </ThemeProvider>
       </body>
     </html>

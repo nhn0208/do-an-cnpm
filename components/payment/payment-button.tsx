@@ -5,7 +5,7 @@ import Link from 'next/link'
 const PaymentButton = () => {
   return (
     <Button>
-        <Link href="/myaccount/payment/">Thanh Toan</Link>
+        <Link href="/myaccount/payment/">Thanh Toán</Link>
     </Button>
   )
 }

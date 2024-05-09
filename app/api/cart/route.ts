@@ -30,8 +30,6 @@ export const addProductId = async (id_item_detail :number) => {
     
     
   }catch ( error) {
-    console.log("Error: ", error);
-    
   }
 }
 
@@ -41,8 +39,6 @@ export const fetchCart = async () => {
     const response = await httpRequest.get(path)
     return response.data
   } catch (error) {
-    console.log(error);
-    
   }
 }
 
@@ -52,8 +48,6 @@ export const increaseProductCart = async (id:number | undefined) => {
     const response = await httpRequest.post(path)
     return response
   } catch (error) {
-    console.log(error);
-    
   }
 }
 
@@ -63,8 +57,6 @@ export const decreaseProductCart = async (id:number | undefined) => {
     const response = await httpRequest.post(path)
     return response
   } catch (error) {
-    console.log(error);
-    
   }
 }
 
@@ -74,8 +66,15 @@ export const deleteProductCart = async (id:number | undefined) => {
     const response = await httpRequest.del(path)
     return response
   } catch (error) {
-    console.log(error);
-    
   }
 }
 
+export const checkoutCart = async (body : any) => {
+  const path = 'cart/checkout'
+  try {
+    const response = await httpRequest.post(path,body);
+    return response;
+  }catch (error){
+
+  }
+}

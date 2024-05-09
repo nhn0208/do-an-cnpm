@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { Button } from '../ui/button'
 import { decreaseProductCart, deleteProductCart, increaseProductCart } from '@/app/api/cart/route'
 import { fetchProductID } from '@/app/api/product/[productId]/route'
+import { formatToVND } from '@/lib/format'
 
 const CartItem = (cart : CartProps) => {
     const [cartProduct,setCartProduct] = useState<ProductProps>()
@@ -29,16 +30,23 @@ const CartItem = (cart : CartProps) => {
         fetch(cart.id_item)
         //console.log(cartProduct);
         
-    },)
+    },[])
   return (
     <div className='flex items-center justify-between border-b border-slate-300 pb-2'>
         <div className='flex'>
-            <Image src={cartProduct ?cartProduct.image : '/logo.png'} alt='' width={60} height={60} decoding='async' data-nimg='1' style={{width: "60px", height:'auto'}}/>
+            <Image src={cartProduct?.image || '/logo.png'} alt='' width={60} height={60} decoding='async' data-nimg='1' style={{width: "60px", height:'auto'}}/>
+            
             <div>
                 <span>{cart.name}</span><br/>
-                <div className='inline-flex border-2 border-black space-x-1'>
+                <h3>Size {cart.size}</h3>
+                <h3>{formatToVND(cart.price)}</h3>
+                
+            </div>
+        </div>
+        <div>
+        <div className='inline-flex border-2 border-black dark:border-white space-x-1'>
                     <div 
-                    className='border-r-2 border-black px-1 cursor-pointer'
+                    className='border-r-2 border-black dark:border-white px-1 cursor-pointer'
                     onClick={()=>{
                         decreaseCart(cart.id_item_detail)
                     }}
@@ -47,7 +55,7 @@ const CartItem = (cart : CartProps) => {
                     </div>
                     <p className='px-1'>{cart.quantity}</p>
                     <div 
-                    className='border-l-2 border-black px-1 cursor-pointer'
+                    className='border-l-2 border-black dark:border-white px-1 cursor-pointer'
                     onClick={()=>{
                         increaseCart(cart.id_item_detail)
                     }}
@@ -55,11 +63,10 @@ const CartItem = (cart : CartProps) => {
                         &gt;
                     </div>
                 </div>
-            </div>
+            <Button className='bg-transperant text-slate-950 hover:bg-transparent dark:text-white dark:hover:bg-transparent' onClick={()=> deleteCart(cart.id_item_detail)}>
+                Xóa
+            </Button>
         </div>
-        <Button onClick={()=> deleteCart(cart.id_item_detail)}>
-            Xóa
-        </Button>
     </div>
   )
 }

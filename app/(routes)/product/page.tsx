@@ -7,16 +7,16 @@ import {  useSearchParams } from 'next/navigation'
 import { fetchProductData } from '@/app/api/product/route'
 import { ProductProps } from '@/lib/interface'
 import ProductCard from '@/components/product/product-card'
-import FilterBar from '@/components/product/filter-bar'
+import PaginationComponent from '@/components/product/pagination-page'
+
 
 
 
 const ProductPage = () => {
   const searchParmas =  useSearchParams();
   const searchBrand = searchParmas.get('id_brand');
-  const searchType = searchParmas.get('id_type');
-  const searchOrigin = searchParmas.get('id_origin');
-  const searchMaterial = searchParmas.get('id_material');
+  const page = searchParmas.get('p')
+  
   
   const [ products, setProducts] = useState<ProductProps [] | null>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -25,7 +25,7 @@ const ProductPage = () => {
   useEffect(()=>{
     const fetchData = async () => {
       setLoading(true)
-      const productData: [] = await fetchProductData({id_brand: Number(searchBrand) ,id_type: Number(searchType)})
+      const productData: [] = await fetchProductData(Number(searchBrand),Number(page))
       setProducts(productData)
     }
     fetchData()
@@ -33,7 +33,7 @@ const ProductPage = () => {
     return () => {
       
     }
-  },[searchBrand,searchType]);
+  },[searchBrand,page]);
 
   if (loading) {
     return <div>Loading...</div>
@@ -41,7 +41,6 @@ const ProductPage = () => {
   return (
     
       <div className='w-full'>
-        <FilterBar searchBrand={searchBrand} searchType={searchType}/>
       <div className='flex justify-center w-full flex-wrap px-10'>
         { products ? products.map((product,index) => (
           <ProductCard key={index} id_item={product.id_item} title={product.name} image={product.image}/>
@@ -49,6 +48,10 @@ const ProductPage = () => {
           <div>No product</div>
         )}
       </div>
+      {searchBrand == null &&
+      <div>
+        <PaginationComponent/>
+      </div>}
       </div>
   )
 }

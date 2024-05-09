@@ -1,8 +1,24 @@
-import React from 'react'
+'use client'
+import { getBrandById } from '@/app/api/brand/route'
+import  { useEffect, useState } from 'react'
 
-const BrandProduct = () => {
+const BrandProduct = ({id_brand} : {id_brand: number}) => {
+  const [brand,setBrand] = useState<any>()
+
+  useEffect(()=>{
+    const fetch =  async () => {
+      const data = await  getBrandById(id_brand)
+      //console.log(data);
+      
+      setBrand(data)
+    }
+    fetch()
+    //console.log(brand);
+    
+    
+  },[])
   return (
-    <div>BrandProduct</div>
+    <p>Thương hiệu: {brand ? brand.name : ''}</p>
   )
 }
 

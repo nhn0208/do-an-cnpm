@@ -10,3 +10,13 @@ export const getAllBrand = async () => {
     throw error; // Rethrow the error for handling in components
   }
 };
+
+export const getBrandById = async (id_brand:number) => {
+  try {
+    const path = `brand/${id_brand}`
+    const response = await httpRequest.get(path);
+    return response.data;
+  }catch (error) {
+    throw error;
+  }
+}

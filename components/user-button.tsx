@@ -119,9 +119,6 @@ const UserButton = () => {
                     </Label>
                     <Input id="password" value={password} type="password" className="text-slate-950 dark:text-white" onChange={event => setPassword(event.target.value)}/>
                 </div>
-                <div>
-                    <GoogleSignInButton />
-                </div>
                 <SheetClose asChild>
                     <Button 
                     onClick={()=> handleLogin()}

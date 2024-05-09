@@ -1,8 +1,21 @@
-import React from 'react'
+'use client'
 
-const MaterialProduct = () => {
+import { getMaterialById } from '@/app/api/material/route'
+import  { useEffect, useState } from 'react'
+
+const MaterialProduct = ({id_material} : {id_material: number}) => {
+  const [material,setMaterial] = useState<any>()
+
+  useEffect(()=>{
+    const fetch = async () => {
+      const data = await getMaterialById(id_material)
+      setMaterial(data)
+    }
+    fetch()
+    
+  },[])
   return (
-    <div>MaterialProduct</div>
+    <p>Chất liệu: {material ? material.name : ''}</p>
   )
 }
 

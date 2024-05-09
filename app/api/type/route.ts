@@ -11,8 +11,12 @@ export const getAllType = async () => {
   }
 };
 
-// export const getTypeByID(id_type:number){
-//   try {
-//     const path = 'item?type'
-//   }
-// }
+export const getTypeById = async (id_type:number) => {
+  try {
+    const path = `type/${id_type}`
+    const response = await httpRequest.get(path);
+    return response.data;
+  }catch (error) {
+    throw error;
+  }
+}

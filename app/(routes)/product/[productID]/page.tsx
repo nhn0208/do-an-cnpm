@@ -10,6 +10,10 @@ import { fetchProductID } from "@/app/api/product/[productId]/route"
 import { Button } from "@/components/ui/button"
 import { formatToVND } from "@/lib/format"
 import AddCartButton from "@/components/product/add-cart-button"
+import BrandProduct from "@/components/product/[productId]/brand-product"
+import MaterialProduct from "@/components/product/[productId]/material-product"
+import OriginProduct from "@/components/product/[productId]/origin-brand"
+import TypeProduct from "@/components/product/[productId]/type-product"
 
 const ProductIDPage = () => {
   const [product, setProduct] = useState<ProductProps>();
@@ -27,6 +31,7 @@ const ProductIDPage = () => {
       setLoading(!loading)
     }
     fetchData()
+    console.log(product);
     
   },[])
 
@@ -49,11 +54,13 @@ const ProductIDPage = () => {
       <div className=" p-10 font-bold w-1/2 space-y-4 text-lg text-slate-950 dark:text-white">
         <h1 className=" text-2xl mb-4">{product.name}</h1>
         
-        <p className="text-sm">Thong tin san pham</p>
-        <p>Thuong hieu: {product.id_brand}</p>
-        <p>xuat xu: {product.id_origin}</p>
-        <p>Kieu dang: {product.id_type}</p>
-        <p>Mo ta: {product.description}</p>
+        <p className="text-sm">Thông tin sản phẩm</p>
+        <BrandProduct id_brand={product.id_brand} />
+        <OriginProduct id_origin={product.id_origin}/>
+        <TypeProduct id_type={product.id_type} />
+        <MaterialProduct id_material={product.id_material} />
+        <p>Mô tả: {product.description}</p>
+        {isSelectedSize && <p>{product.sizes ? formatToVND(product.sizes.find((size)=> size.id_item_detail === isSelectedSize)?.price) : ''}</p>}
         <div className="flex space-x-2">
           {product.sizes && product.sizes.map((size,index)=>(
             <div key={index}>
