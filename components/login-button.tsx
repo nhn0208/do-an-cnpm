@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from './ui/button'
-import { login } from '@/app/(auth)/route'
+import { login } from '@/app/api/login/route'
 
 const LoginButton = ({username,password,handleClick}:{username : string, password: string,handleClick: any}) => {
 
