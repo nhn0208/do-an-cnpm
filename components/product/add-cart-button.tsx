@@ -1,5 +1,5 @@
 'use client'
-import { isLogin } from "@/app/api/auth/route"
+import { isLogin } from "@/app/(auth)/route"
 import { Button } from '../ui/button'
 import { addProductId } from '@/app/api/cart/route'
 import { ProfileProps } from "@/lib/interface"
