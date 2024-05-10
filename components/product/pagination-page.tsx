@@ -21,7 +21,7 @@ const PaginationComponent = () => {
   }
 
   useEffect(()=>{
-    router.push(`http://localhost:3000/product?p=${page}`)
+    router.push(`/product?p=${page}`)
   },[page])
   return (
     <Pagination>
