@@ -112,7 +112,7 @@ const AddressComponent = ({ sendDataToParent } : { sendDataToParent : any }) => 
                     className="w-full justify-between"
                   >
                     {phuongXa !== ''
-                      ? address.find((tinh) => tinh.Name === tinhThanh)?.Districts.find(quan => quan.Name === quanHuyen)?.Wards.find(phuong=>  phuong.Name === phuongXa).Name
+                      ? address.find((tinh) => tinh.Name === tinhThanh)?.Districts.find(quan => quan.Name === quanHuyen)?.Wards.find(phuong=>  phuong.Name === phuongXa)?.Name
                       : "Chọn phường xã"}
                     <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                   </Button>

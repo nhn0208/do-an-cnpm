@@ -20446,6 +20446,7 @@ export const address =
           "Name": "Huyện Bạch Long Vĩ",
           "Wards": [
             {
+              "Name" : "",
               "Level": "Huyện"
             }
           ]
@@ -33285,6 +33286,7 @@ export const address =
           "Name": "Huyện Cồn Cỏ",
           "Wards": [
             {
+              "Name" : "",
               "Level": "Huyện"
             }
           ]
@@ -34407,6 +34409,7 @@ export const address =
           "Name": "Huyện Hoàng Sa",
           "Wards": [
             {
+              "Name" : "",
               "Level": "Huyện"
             }
           ]
@@ -36678,6 +36681,7 @@ export const address =
           "Name": "Huyện Lý Sơn",
           "Wards": [
             {
+              "Name": "",
               "Level": "Huyện"
             }
           ]
@@ -47027,6 +47031,7 @@ export const address =
           "Name": "Huyện Côn Đảo",
           "Wards": [
             {
+              "Name" : "",
               "Level": "Huyện"
             }
           ]

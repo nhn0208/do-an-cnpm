@@ -39,7 +39,7 @@ const CartItem = (cart : CartProps) => {
             <div>
                 <span>{cart.name}</span><br/>
                 <h3>Size {cart.size}</h3>
-                <h3>{formatToVND(cart.price)}</h3>
+                <h3>{formatToVND(cart.price || 0)}</h3>
                 
             </div>
         </div>

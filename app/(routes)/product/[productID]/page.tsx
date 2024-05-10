@@ -59,12 +59,12 @@ const ProductIDPage = () => {
         <h1 className=" text-2xl mb-4">{product.name}</h1>
         
         <p className="text-sm">Thông tin sản phẩm</p>
-        <BrandProduct id_brand={product.id_brand} />
-        <OriginProduct id_origin={product.id_origin}/>
-        <TypeProduct id_type={product.id_type} />
-        <MaterialProduct id_material={product.id_material} />
+        <BrandProduct id_brand={product.id_brand || 0} />
+        <OriginProduct id_origin={product.id_origin ||0}/>
+        <TypeProduct id_type={product.id_type || 0} />
+        <MaterialProduct id_material={product.id_material || 0} />
         <p>Mô tả: {product.description}</p>
-        {isSelectedSize && <p>{product.sizes ? formatToVND(product.sizes.find((size)=> size.id_item_detail === isSelectedSize)?.price) : ''}</p>}
+        {isSelectedSize && <p>{product.sizes ? formatToVND(product.sizes.find((size)=> size.id_item_detail === isSelectedSize)?.price || 0) : ''}</p>}
         <div className="flex space-x-2">
           {product.sizes && product.sizes.map((size,index)=>(
             <div key={index}>

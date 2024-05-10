@@ -111,7 +111,7 @@ const Payment = () => {
           <div className='w-full py-4 space-y-2 border-b border-gray-300 text-gray-500'>
             <div className='w-full flex justify-between'>
               <p>Tạm tính</p>
-              <p>{formatToVND(cartList ? cartList?.reduce(((total,num)=> { return total + num.price}),0) : 0)}</p>
+              <p>{formatToVND(cartList ? cartList?.reduce(((total,num)=> { return total + (num.price||0)}),0) : 0)}</p>
             </div>
             <div className='w-full flex justify-between'>
               <p>Phí ship</p>
@@ -120,7 +120,7 @@ const Payment = () => {
           </div>
           <div className='w-full flex justify-between py-4 text-xl'>
             <h2>Tổng tiền</h2>
-            <p>{formatToVND(cartList ? cartList?.reduce(((total,num)=> { return total + num.price}),35000) : 0)}</p>
+            <p>{formatToVND(cartList ? cartList?.reduce(((total,num)=> { return total + (num.price || 0)}),35000) : 0)}</p>
           </div>
         </div>
       </div>
