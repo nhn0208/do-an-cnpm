@@ -1,6 +1,6 @@
 'use client'
 
-import { getMaterialById } from '@/app/api/material/route'
+import { getMaterialById } from '@/app/api/material/material'
 import  { useEffect, useState } from 'react'
 
 const MaterialProduct = ({id_material} : {id_material: number}) => {

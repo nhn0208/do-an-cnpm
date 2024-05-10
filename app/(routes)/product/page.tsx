@@ -4,7 +4,7 @@ import { useState, useEffect} from 'react'
 import {  useSearchParams } from 'next/navigation'
 
 
-import { fetchProductData } from '@/app/api/product/route'
+import { fetchProductData } from '@/app/api/product/product'
 import { ProductProps } from '@/lib/interface'
 import ProductCard from '@/components/product/product-card'
 import PaginationComponent from '@/components/product/pagination-page'

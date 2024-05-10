@@ -1,7 +1,7 @@
 'use client'
-import { isLogin } from "@/app/api/login/route"
+import { isLogin } from "@/app/api/login/login"
 import { Button } from '../ui/button'
-import { addProductId } from '@/app/api/cart/route'
+import { addProductId } from '@/app/api/cart/cart'
 import { ProfileProps } from "@/lib/interface"
 import { useEffect, useState } from "react"
 import { notification } from "antd"

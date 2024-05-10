@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { ShoppingBag } from 'lucide-react'
 
 import { CartProps } from '@/lib/interface'
-import {fetchCart} from '@/app/api/cart/route'
+import {fetchCart} from '@/app/api/cart/cart'
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import PaymentButton from '@/components/payment/payment-button'
 import CartItem from './cart-item'

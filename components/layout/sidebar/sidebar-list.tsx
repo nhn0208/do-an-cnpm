@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/sheet"
 import SidebarItem from "./sidebar-item"
 import { useEffect, useState } from 'react'
-import { getAllBrand } from '@/app/api/brand/route'
+import { getAllBrand } from '@/app/api/brand/brand'
 import { BrandProps } from '@/lib/interface'
 
 const SidebarList = (

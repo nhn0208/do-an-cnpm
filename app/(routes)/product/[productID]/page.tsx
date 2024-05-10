@@ -6,7 +6,7 @@ import Image from "next/image"
 import { cn } from "@/lib/utils"
 
 import { ProductProps } from "@/lib/interface"
-import { fetchProductID } from "@/app/api/product/[productId]/route"
+import { fetchProductID } from "@/app/api/product/[productId]/productId"
 import { Button } from "@/components/ui/button"
 import { formatToVND } from "@/lib/format"
 import AddCartButton from "@/components/product/add-cart-button"

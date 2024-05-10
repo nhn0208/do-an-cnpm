@@ -1,4 +1,4 @@
-import { fetchProductID } from "@/app/api/product/[productId]/route"
+import { fetchProductID } from "@/app/api/product/[productId]/productId"
 import { formatToVND } from "@/lib/format"
 import { CartProps, ProductProps } from "@/lib/interface"
 import Image from "next/image"

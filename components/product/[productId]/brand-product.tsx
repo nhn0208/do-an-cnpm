@@ -1,5 +1,5 @@
 'use client'
-import { getBrandById } from '@/app/api/brand/route'
+import { getBrandById } from '@/app/api/brand/brand'
 import  { useEffect, useState } from 'react'
 
 const BrandProduct = ({id_brand} : {id_brand: number}) => {

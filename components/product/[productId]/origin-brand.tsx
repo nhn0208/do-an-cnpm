@@ -1,6 +1,6 @@
 'use client'
 
-import { getOriginById } from '@/app/api/origin/route'
+import { getOriginById } from '@/app/api/origin/origin'
 import  { useEffect, useState } from 'react'
 
 const OriginProduct = ({id_origin} : {id_origin: number}) => {

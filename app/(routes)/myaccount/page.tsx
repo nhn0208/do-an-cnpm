@@ -6,7 +6,7 @@ import SignUp from "@/components/sign-up"
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { ProfileProps } from "@/lib/interface";
-import { isLogin } from "@/app/api/login/route";
+import { isLogin } from "@/app/api/login/login";
 const AccountPage = () => {
   const router = useRouter();
     //const { data: session } = useSession();

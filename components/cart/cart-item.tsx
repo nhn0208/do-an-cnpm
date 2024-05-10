@@ -4,8 +4,8 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
 import { Button } from '../ui/button'
-import { decreaseProductCart, deleteProductCart, increaseProductCart } from '@/app/api/cart/route'
-import { fetchProductID } from '@/app/api/product/[productId]/route'
+import { decreaseProductCart, deleteProductCart, increaseProductCart } from '@/app/api/cart/cart'
+import { fetchProductID } from '@/app/api/product/[productId]/productId'
 import { formatToVND } from '@/lib/format'
 
 const CartItem = (cart : CartProps) => {

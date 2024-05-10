@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { cn } from '@/lib/utils'
 import LoginButton from './login-button'
-import { isLogin } from '@/app/api/login/route'
+import { isLogin } from '@/app/api/login/login'
 import { ProfileProps } from '@/lib/interface'
 import { useRouter } from 'next/navigation'
 

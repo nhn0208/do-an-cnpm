@@ -1,6 +1,6 @@
 'use client'
 
-import { getTypeById } from '@/app/api/type/route'
+import { getTypeById } from '@/app/api/type/type'
 import  { useEffect, useState } from 'react'
 
 const TypeProduct = ({id_type} : {id_type: number}) => {

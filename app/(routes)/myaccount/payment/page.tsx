@@ -7,7 +7,7 @@ import{ useEffect, useState } from 'react'
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import AddressComponent from '@/components/payment/address/address';
-import { checkoutCart, fetchCart } from '@/app/api/cart/route';
+import { checkoutCart, fetchCart } from '@/app/api/cart/cart';
 import PaymentProduct from '@/components/payment/payment-product';
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import Link from 'next/link';
