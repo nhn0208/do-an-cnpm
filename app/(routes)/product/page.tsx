@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect} from 'react'
+import { useState, useEffect, Suspense} from 'react'
 import {  useSearchParams } from 'next/navigation'
 
 
@@ -40,19 +40,21 @@ const ProductPage = () => {
   }
   return (
     
+    <Suspense>
       <div className='w-full'>
-      <div className='flex justify-center w-full flex-wrap px-10'>
-        { products ? products.map((product,index) => (
-          <ProductCard key={index} id_item={product.id_item} title={product.name} image={product.image}/>
-        )) : (
-          <div>No product</div>
-        )}
+        <div className='flex justify-center w-full flex-wrap px-10'>
+          { products ? products.map((product,index) => (
+            <ProductCard key={index} id_item={product.id_item} title={product.name} image={product.image}/>
+          )) : (
+            <div>No product</div>
+          )}
+        </div>
+        {searchBrand == null &&
+        <div>
+          <PaginationComponent/>
+        </div>}
       </div>
-      {searchBrand == null &&
-      <div>
-        <PaginationComponent/>
-      </div>}
-      </div>
+    </Suspense>
   )
 }
 export default ProductPage
