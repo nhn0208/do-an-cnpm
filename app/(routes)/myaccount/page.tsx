@@ -1,6 +1,6 @@
 'use client'
 
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import SignIn from "@/components/sign-in"
 import SignUp from "@/components/sign-up"
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -35,21 +35,19 @@ const AccountPage = () => {
     </div>
   )
   return (
-    <Suspense>
-      <div className='w-full flex flex-col items-center'>
-        <SignUp classname={cn([ isSignUp ? 'block': 'hidden','animate-fade-in'])}/>
-        <SignIn classname={cn([ !isSignUp ? 'block': 'hidden','animate-fade-in'])}/>
-        { isSignUp 
-        ? <p className="text-slate-950 dark:text-white">Bạn đã có tài khoản? 
-            <span className="underline cursor-pointer hover:opacity-80" onClick={()=> { setSignUp(!isSignUp); router.push(pathname) }}>Đăng nhập ngay</span>
-          </p>
-        : <p className="text-slate-950 dark:text-white">
-            Bạn chưa có tài khoản? <span className="underline cursor-pointer hover:opacity-80" onClick={()=> { setSignUp(!isSignUp); router.push(pathname + '?action=register') }}>Đăng ký ngay</span>
-          </p>
-        }
-              
-      </div>
-    </Suspense>
+    <div className='w-full flex flex-col items-center'>
+      <SignUp classname={cn([ isSignUp ? 'block': 'hidden','animate-fade-in'])}/>
+      <SignIn classname={cn([ !isSignUp ? 'block': 'hidden','animate-fade-in'])}/>
+      { isSignUp 
+      ? <p className="text-slate-950 dark:text-white">Bạn đã có tài khoản? 
+          <span className="underline cursor-pointer hover:opacity-80" onClick={()=> { setSignUp(!isSignUp); router.push(pathname) }}>Đăng nhập ngay</span>
+        </p>
+      : <p className="text-slate-950 dark:text-white">
+          Bạn chưa có tài khoản? <span className="underline cursor-pointer hover:opacity-80" onClick={()=> { setSignUp(!isSignUp); router.push(pathname + '?action=register') }}>Đăng ký ngay</span>
+        </p>
+      }
+            
+    </div>
   )
 }
 
