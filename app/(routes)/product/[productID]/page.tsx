@@ -15,7 +15,9 @@ import MaterialProduct from "@/components/product/[productId]/material-product"
 import OriginProduct from "@/components/product/[productId]/origin-brand"
 import TypeProduct from "@/components/product/[productId]/type-product"
 
+
 const ProductIDPage = () => {
+  
   const [product, setProduct] = useState<ProductProps>();
   const [isSelectedSize, setSelectedSize] = useState<number>()
   //console.log(isSelectedSize);
@@ -34,6 +36,8 @@ const ProductIDPage = () => {
     console.log(product);
     
   },[])
+
+  
 
   if (!loading) {
     <div>Loading...</div>

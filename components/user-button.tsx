@@ -3,7 +3,6 @@
 import Link from "next/link"
 import { User2Icon } from "lucide-react"
 import Image from "next/image"
-import { useSession } from "next-auth/react"
 import { useEffect, useState } from "react"
 
 import {
@@ -12,7 +11,6 @@ import {
     SheetHeader,
     SheetTitle,
     SheetTrigger,
-    SheetFooter,
     SheetClose
 } from "@/components/ui/sheet"
 import {
@@ -20,7 +18,6 @@ import {
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuLabel,
-    DropdownMenuSeparator,
     DropdownMenuTrigger,
   } from "@/components/ui/dropdown-menu"
   
@@ -28,11 +25,10 @@ import { Input } from "./ui/input"
 import { Label } from "./ui/label"
 import { Button } from "./ui/button"
 import { Checkbox } from "./ui/checkbox"
-import { GoogleSignInButton, GoogleSignOutButton } from "./auth-button"
-import { isLogin, login, logout } from "@/app/api/auth/route"
+import { isLogin, logout } from "@/app/api/auth/route"
 import { ProfileProps } from "@/lib/interface"
-import { redirect } from "react-router"
 import { useRouter } from "next/navigation"
+import LoginButton from "./login-button"
 
 
 
@@ -55,13 +51,7 @@ const UserButton = () => {
     const [username,setUsername] = useState('')
     const [password,setPassword] = useState('')
 
-    const handleLogin = async () => {
-        await login({
-            email: username,
-            password: password
-        })
-        setClick(!isClick)
-    }
+    
 
     const handleLogout = async () => {
         await logout()
@@ -120,11 +110,7 @@ const UserButton = () => {
                     <Input id="password" value={password} type="password" className="text-slate-950 dark:text-white" onChange={event => setPassword(event.target.value)}/>
                 </div>
                 <SheetClose asChild>
-                    <Button 
-                    onClick={()=> handleLogin()}
-                    className="w-full rounded-full bg-black dark:bg-slate-950 mt-4 text-white dark:text-white hover:bg-green-600 dark:hover:bg-green-600" type="submit">
-                        LOG IN
-                    </Button>
+                    <LoginButton username={username} password={password} handleClick={()=>setClick(!isClick)}/>
                 </SheetClose>
             </div>
             <div className="w-full py-4 flex item-center justify-between">

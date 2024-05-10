@@ -22,7 +22,7 @@ const Payment = () => {
     const [address,setAddress] = useState<string>("");
     const [addressField,setAddressField] = useState<string>("");
     const [completed,setCompleted] = useState<boolean>(false)
-    const [checkout,setCheckout] = useState<boolean>(false)
+    const [invoice,setInvoice] = useState<any>()
 
     const handleCheckout = async () => {
       const response = await checkoutCart({
@@ -32,9 +32,8 @@ const Payment = () => {
         userLng: "106.77740348320262",
         address: `${addressField} ${address}`
       })
-      console.log(response);
-      
-      setCheckout(true)
+      //console.log(response);
+      setInvoice(response)
       
     }
     useEffect(()=>{
@@ -50,22 +49,17 @@ const Payment = () => {
       setCompleted(name !== '' && mail !== '' && phone !== '' && address !== '' && addressField !=='')
     },[name,mail,phone,address,addressField])
 
-    if ( checkout) {
+    if ( invoice) {
       return (
         <div className='w-full p-20'>
           <h1>Đặt hàng thành công</h1>
+          <p>{invoice.data.description}</p>
+          <p>{invoice.data.address}</p>
         </div>
       )
     }
     
   return (
-    // <div className='flex flex-col items-center'>
-    //   {/* <div className='w-full flex justify-center py-10 space-x-4'>
-    //       <h1 className={cn([itemSelected === "order" ? "text-blue-600" : " text-gray-500","cursor-pointer"])} onClick={()=>setItemSelected("order")}>Kiểm tra đơn hàng</h1>
-    //       <h1 className={cn([itemSelected === "infor" ? "text-blue-600" : " text-gray-500",'cursor-pointer'])} onClick={()=>setItemSelected("infor")}>Thông tin người nhận</h1>
-    //       <h1 className={cn([itemSelected === "payment" ? "text-blue-600" : " text-gray-500",'cursor-pointer'])} onClick={()=>setItemSelected("payment")}>Phương thức thanh toán</h1>
-    //   </div> */}
-      
       <div className='w-full flex px-20 py-20 justify-center'>
         <div className='space-y-4 w-1/2 flex flex-col items-center px-20'>
           <div className=" w-full items-center">

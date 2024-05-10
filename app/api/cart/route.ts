@@ -16,13 +16,13 @@ export const addProductId = async (id_item_detail :number) => {
     // console.log(loginResponse.data);
 
     const cartResponse = await httpRequest.post(cartPath)
-    .then (()=> {
+    .then(()=>{
       notification.open({
         message: "Đã thêm vào giỏ hàng",
         description:'',
         placement: 'bottomRight',
         type: 'success',
-    });
+    })
     })
     // console.log(cartResponse);
     

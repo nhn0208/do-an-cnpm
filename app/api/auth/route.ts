@@ -7,8 +7,6 @@ export const isLogin = async () => {
         const response = await httpRequest.get(path)
         return response.data;
     }catch (error) {
-        console.log(error);
-        
     }
 }
 

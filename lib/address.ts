@@ -47184,11 +47184,6 @@ export const address =
               "Level": "Phường"
             },
             {
-              "Id": "26828",
-              "Name": "Phường Hiệp Phú",
-              "Level": "Phường"
-            },
-            {
               "Id": "26809",
               "Name": "Phường Hiệp Bình Phước",
               "Level": "Phường"

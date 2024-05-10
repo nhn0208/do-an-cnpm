@@ -7,6 +7,7 @@ import {
     PaginationNext,
     PaginationPrevious,
   } from "@/components/ui/pagination"
+import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react"
 
@@ -24,11 +25,11 @@ const PaginationComponent = () => {
   },[page])
   return (
     <Pagination>
-    <PaginationContent>
-      <PaginationItem>
+    <PaginationContent className="flex space-x-2">
+      <PaginationItem className={cn(page === 1 ? "underline text-slate-950" : "text-gray-400")}>
         <span onClick={()=>handlePage(1)}>1</span>
       </PaginationItem>
-      <PaginationItem>
+      <PaginationItem className={cn(page === 2 ? "underline text-slate-950":"text-gray-400")}>
         <span onClick={()=> handlePage(2)} >
           2
         </span>
