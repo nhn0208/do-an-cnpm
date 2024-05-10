@@ -10,17 +10,17 @@ export const isLogin = async () => {
     }
 }
 
-export const register = async (body:any) => {
-    // const config = {
-    //     headers: { access_token: token },
-    // };
-    try {
-        const res = await httpRequest.post(`auth/register`, body);
-        return res;
-    } catch (error) {
-        console.log(error);
-    }
-};
+// export const register = async (body:any) => {
+//     // const config = {
+//     //     headers: { access_token: token },
+//     // };
+//     try {
+//         const res = await httpRequest.post(`auth/register`, body);
+//         return res;
+//     } catch (error) {
+//         console.log(error);
+//     }
+// };
 export const login = async (body:any) => {
     // const config = {
     //     headers: { access_token: token },
@@ -35,61 +35,61 @@ export const login = async (body:any) => {
         console.log(error);
     }
 };
-export const sendOTPForgotPw = async (body:any) => {
-    // const config = {
-    //     headers: { access_token: token },
-    // };
-    try {
-        const res = await httpRequest.post(`user/forgotpassword`, body);
-        return res;
-    } catch (error) {
-        console.log(error);
-    }
-};
-export const confirmOTPForgotPw = async (body:any) => {
-    // const config = {
-    //     headers: { access_token: token },
-    // };
-    try {
-        const res = await httpRequest.post(`user/forgotpassword/verify`, body);
-        return res;
-    } catch (error) {
-        console.log(error);
-    }
-};
-export const changeForgotPw = async (body:any) => {
-    // const config = {
-    //     headers: { access_token: token },
-    // };
-    try {
-        const res = await httpRequest.post(`user/forgotpassword/success`, body);
-        return res;
-    } catch (error) {
-        console.log(error);
-    }
-};
-export const sendMailActive = async () => {
-    // const config = {
-    //     headers: { access_token: token },
-    // };
-    try {
-        const res = await httpRequest.get(`user/activebutton`);
-        return res;
-    } catch (error) {
-        console.log(error);
-    }
-};
-export const activeAccount = async (body: any) => {
-    // const config = {
-    //     headers: { access_token: token },
-    // };
-    try {
-        const res = await httpRequest.post(`user/active`, body);
-        return res;
-    } catch (error) {
-        console.log(error);
-    }
-};
+// export const sendOTPForgotPw = async (body:any) => {
+//     // const config = {
+//     //     headers: { access_token: token },
+//     // };
+//     try {
+//         const res = await httpRequest.post(`user/forgotpassword`, body);
+//         return res;
+//     } catch (error) {
+//         console.log(error);
+//     }
+// };
+// export const confirmOTPForgotPw = async (body:any) => {
+//     // const config = {
+//     //     headers: { access_token: token },
+//     // };
+//     try {
+//         const res = await httpRequest.post(`user/forgotpassword/verify`, body);
+//         return res;
+//     } catch (error) {
+//         console.log(error);
+//     }
+// };
+// export const changeForgotPw = async (body:any) => {
+//     // const config = {
+//     //     headers: { access_token: token },
+//     // };
+//     try {
+//         const res = await httpRequest.post(`user/forgotpassword/success`, body);
+//         return res;
+//     } catch (error) {
+//         console.log(error);
+//     }
+// };
+// export const sendMailActive = async () => {
+//     // const config = {
+//     //     headers: { access_token: token },
+//     // };
+//     try {
+//         const res = await httpRequest.get(`user/activebutton`);
+//         return res;
+//     } catch (error) {
+//         console.log(error);
+//     }
+// };
+// export const activeAccount = async (body: any) => {
+//     // const config = {
+//     //     headers: { access_token: token },
+//     // };
+//     try {
+//         const res = await httpRequest.post(`user/active`, body);
+//         return res;
+//     } catch (error) {
+//         console.log(error);
+//     }
+// };
 
 export const logout = async () => {
     const path = `auth/logout`
