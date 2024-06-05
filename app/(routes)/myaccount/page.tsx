@@ -5,33 +5,22 @@ import SignIn from "@/components/sign-in"
 import SignUp from "@/components/sign-up"
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { CartProps,  ProfileProps } from "@/lib/interface";
+import { ProfileProps } from "@/lib/interface";
 import { isLogin } from "@/app/api/login/login";
-import { ReceiptTextIcon, ShoppingBag, User } from "lucide-react";
+import { ShoppingBag, User } from "lucide-react";
 import Image from "next/image";
-import { fetchCart } from "@/app/api/cart/cart";
-import CartItem from "@/components/cart/cart-item";
-import CheckoutButton from "@/components/payment/checkout-button";
-//import { getAllInvoice } from "@/app/api/invoice/invoice";
+import CartInAccount from "@/components/myaccount/cart";
+
 const AccountPage = () => {
   const router = useRouter();
     const [profile,setProfile] = useState<ProfileProps>({});
-    const [cartList,setCartList] = useState<CartProps[] | null>([]);
+    
     //const [invoices,setInvoices] = useState<InvoiceProps[] | null>([])
     useEffect(()=>{
       const fetchProfile = async () => {
         const res = await isLogin();
         setProfile(res);    
       }
-      const fetchCartData = async ()=>{
-        const data = await fetchCart()
-        setCartList(data)
-      }
-      // const fetchInvoiceData = async () => {
-      //   const data = await getAllInvoice()
-      //   setInvoices(data)
-      // }
-      fetchCartData()
       fetchProfile()
       //fetchInvoiceData()
     })
@@ -89,21 +78,7 @@ const AccountPage = () => {
       </div>
       }
       {sidebar === 'cart' &&
-      <div className="w-full p-20 flex flex-col space-y-4">
-        <div className="w-full flex justify-center">
-          {cartList && cartList.map((cart,index)=>(
-                      <div key={index} className="w-1/2">
-                          <CartItem name={cart.name} 
-                          id_item_detail={cart.id_item_detail} 
-                          id_item={cart.id_item} 
-                          size={cart.size}
-                          quantity={cart.quantity}
-                          price={cart.price} />
-                      </div>
-                  ))}
-        </div>
-        <div className="w-full flex justify-end pr-[300px]"><CheckoutButton/></div>
-      </div>
+        <CartInAccount/>
       }
     </div>
   )
