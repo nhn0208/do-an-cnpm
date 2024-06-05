@@ -37,3 +37,20 @@ export interface ProfileProps {
     role?: string,
     image?: string,
 }
+
+export interface InvoiceProps {
+    "id_invoice": number,
+    "id_customer": number,
+    "id_staff": number | null,
+    "id_status": number,
+    "id_payment_method": number,
+    "datetime": string,
+    "ship_fee": number,
+    "item_fee": number,
+    "total": number,
+    "payment_status": number,
+    "address": string,
+    "description": string,
+    "name_status": string,
+    "name_payment_method": string
+}

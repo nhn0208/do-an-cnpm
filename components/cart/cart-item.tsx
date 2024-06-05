@@ -32,7 +32,7 @@ const CartItem = (cart : CartProps) => {
         
     },[])
   return (
-    <div className='flex items-center justify-between border-b border-slate-300 pb-2'>
+    <div className='w-full flex items-center justify-between border-b border-slate-300 pb-2'>
         <div className='flex'>
             <Image src={cartProduct?.image || '/logo.png'} alt='' width={60} height={60} decoding='async' data-nimg='1' style={{width: "60px", height:'auto'}}/>
             
@@ -51,7 +51,7 @@ const CartItem = (cart : CartProps) => {
                         decreaseCart(cart.id_item_detail)
                     }}
                     >
-                        &lt;
+                        -
                     </div>
                     <p className='px-1'>{cart.quantity}</p>
                     <div 
@@ -60,7 +60,7 @@ const CartItem = (cart : CartProps) => {
                         increaseCart(cart.id_item_detail)
                     }}
                     >
-                        &gt;
+                        +
                     </div>
                 </div>
             <Button className='bg-transperant text-slate-950 hover:bg-transparent dark:text-white dark:hover:bg-transparent' onClick={()=> deleteCart(cart.id_item_detail)}>

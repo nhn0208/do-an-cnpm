@@ -90,7 +90,7 @@ const Payment = () => {
               </RadioGroup>
             </div>
             <div className='flex justify-between w-full pt-6'>
-              <Link href="/myaccount/cart" className="text-blue-600 text-sm">Giỏ hàng</Link>
+              <Link href="/myaccount?menu=cart" className="text-blue-600 text-sm">Giỏ hàng</Link>
               <Button 
                 variant={"outline"} className='bg-blue-500 text-white p-6'
                 disabled={!completed}

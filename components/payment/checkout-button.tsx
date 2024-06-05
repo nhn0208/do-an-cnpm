@@ -2,12 +2,12 @@ import React from 'react'
 import { Button } from '../ui/button'
 import Link from 'next/link'
 
-const PaymentButton = () => {
+const CheckoutButton = () => {
   return (
     <Button>
-        <Link href="/myaccount/payment/">Thanh Toán</Link>
+        <Link href="/checkout">Thanh Toán</Link>
     </Button>
   )
 }
 
-export default PaymentButton
+export default CheckoutButton

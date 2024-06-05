@@ -15,7 +15,7 @@ const TypeProduct = ({id_type} : {id_type: number}) => {
     
   },[])
   return (
-    <p>Chất liệu: {type ? type.name : ''}</p>
+    <p>Kiểu dáng: {type ? type.name : ''}</p>
   )
 }
 

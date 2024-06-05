@@ -5,9 +5,10 @@ import { ShoppingBag } from 'lucide-react'
 
 import { CartProps } from '@/lib/interface'
 import {fetchCart} from '@/app/api/cart/cart'
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
-import PaymentButton from '@/components/payment/payment-button'
+import { Sheet, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
+import CheckoutButton from '@/components/payment/checkout-button'
 import CartItem from './cart-item'
+import { formatToVND } from '@/lib/format'
 
 const CartButton = () => {
     const [cartList,setCartList] = useState<CartProps[] | null>([]);
@@ -45,7 +46,13 @@ const CartButton = () => {
                     </div>
                 )) : null}
             </div>
-            <div onClick={()=> setOpenSheet(!openSheet)}><PaymentButton/></div>
+            <div className='w-full flex justify-between'>
+                <p>Tạm tính</p>
+                <p>{formatToVND(cartList ? cartList?.reduce(((total,num)=> { return total + (num.price||0)}),0) : 0)}</p>
+            </div>
+            <SheetFooter>
+                <div onClick={()=> setOpenSheet(!openSheet)}><CheckoutButton/></div>
+            </SheetFooter>
         </SheetContent>
         
     </Sheet>
