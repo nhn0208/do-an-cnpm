@@ -62,12 +62,12 @@ const AccountPage = () => {
           <div className="border-2 border-white rounded-full px-2 py-[6px] "><ShoppingBag width={20} height={24}/></div>
           <p>Giỏ hàng</p>
         </div>
-        <div 
+        {/* <div 
         onClick={()=>setSidebar('invoices')}
         className={cn(["h-12 flex items-center space-x-2 pl-4", sidebar === 'invoices' ? 'text-white bg-blue-400 border-r-8 border-slate-900':'text-slate-950'])}>
           <div className="border-2 border-white rounded-full p-2"><ReceiptTextIcon width={20} height={20}/></div>
           <p>Lịch sử mua hàng</p>
-        </div>
+        </div> */}
         
       </div>
       {/* Main account page */}
@@ -103,10 +103,6 @@ const AccountPage = () => {
                   ))}
         </div>
         <div className="w-full flex justify-end pr-[300px]"><CheckoutButton/></div>
-      </div>
-      }
-      {sidebar === 'invoices' &&
-      <div className="w-full p-20 flex flex-col space-y-4">
       </div>
       }
     </div>
