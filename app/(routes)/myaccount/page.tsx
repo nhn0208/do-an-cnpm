@@ -7,9 +7,10 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { ProfileProps } from "@/lib/interface";
 import { isLogin } from "@/app/api/login/login";
-import { ShoppingBag, User } from "lucide-react";
+import { ReceiptTextIcon, ShoppingBag, User } from "lucide-react";
 import Image from "next/image";
 import CartInAccount from "@/components/myaccount/cart";
+import Invoices from "@/components/myaccount/invoices";
 
 const AccountPage = () => {
   const router = useRouter();
@@ -24,9 +25,6 @@ const AccountPage = () => {
       fetchProfile()
       //fetchInvoiceData()
     })
-    useEffect(()=>{
-      
-  })
   
   const pathname = usePathname()
   const searchParams = useSearchParams();
@@ -38,25 +36,31 @@ const AccountPage = () => {
   if (profile) return (
     <div className="flex">
       {/* Sidebar account */}
-      <div className="pt-20 w-1/6 h-screen border-r border-slate-400">
+      <div className="pt-20 w-[250px] h-screen border-r border-primary">
         <div 
         onClick={()=>setSidebar('infor')}
-        className={cn(["h-12 flex items-center space-x-2 pl-4", sidebar === 'infor' ? 'text-white bg-blue-400 border-r-8 border-slate-900':'text-slate-950'])}>
-          <div className="border-2 border-white rounded-full p-2"><User width={20} height={20}/></div>
-          <p>Thông tin cá nhân</p>
+        className={cn(["h-12 w-full flex items-center space-x-2 pl-4", sidebar === 'infor' ? 'text-white bg-primary border-r-8 border-slate-950':'text-slate-950'])}>
+          <div className={cn("border-2 rounded-full p-2", sidebar === 'infor' ? 'border-white' : 'border-primary')}>
+            <User className={cn([sidebar === 'infor' ? 'text-white' : 'text-primary'])} width={20} height={20}/>
+          </div>
+          <p className="text-slate-950 dark:text-white">Thông tin cá nhân</p>
         </div>
         <div 
         onClick={()=>setSidebar('cart')}
-        className={cn(["h-12 flex items-center space-x-2 pl-4", sidebar === 'cart' ? 'text-white bg-blue-400 border-r-8 border-slate-900':'text-slate-950'])}>
-          <div className="border-2 border-white rounded-full px-2 py-[6px] "><ShoppingBag width={20} height={24}/></div>
-          <p>Giỏ hàng</p>
+        className={cn(["h-12 w-full flex items-center space-x-2 pl-4", sidebar === 'cart' ? 'text-white bg-primary border-r-8 border-slate-950':'text-slate-950'])}>
+          <div className={cn("border-2 rounded-full px-2 py-[6px]", sidebar === 'cart' ? 'border-white' : 'border-primary')}>
+            <ShoppingBag className={cn([sidebar === 'cart' ? 'text-white' : 'text-primary'])} width={20} height={24}/>
+          </div>
+          <p className="text-slate-950 dark:text-white">Giỏ hàng</p>
         </div>
-        {/* <div 
+        <div 
         onClick={()=>setSidebar('invoices')}
-        className={cn(["h-12 flex items-center space-x-2 pl-4", sidebar === 'invoices' ? 'text-white bg-blue-400 border-r-8 border-slate-900':'text-slate-950'])}>
-          <div className="border-2 border-white rounded-full p-2"><ReceiptTextIcon width={20} height={20}/></div>
-          <p>Lịch sử mua hàng</p>
-        </div> */}
+        className={cn(["h-12 w-full flex items-center space-x-2 pl-4", sidebar === 'invoices' ? 'text-white bg-primary border-r-8 border-slate-950':'text-slate-950'])}>
+          <div className={cn("border-2 rounded-full p-2", sidebar === 'invoices' ? 'border-white' : 'border-primary')}>
+            <ReceiptTextIcon className={cn([sidebar === 'invoices' ? 'text-white' : 'text-primary'])} width={20} height={20}/>
+          </div>
+          <p className="text-slate-950 dark:text-white">Lịch sử mua hàng</p>
+        </div>
         
       </div>
       {/* Main account page */}
@@ -79,6 +83,9 @@ const AccountPage = () => {
       }
       {sidebar === 'cart' &&
         <CartInAccount/>
+      }
+      {sidebar === 'invoices' &&
+        <Invoices />
       }
     </div>
   )

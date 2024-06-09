@@ -26,10 +26,10 @@ const PaginationComponent = () => {
   return (
     <Pagination>
     <PaginationContent className="flex space-x-2">
-      <PaginationItem className={cn(page === 1 ? "underline text-slate-950" : "text-gray-400")}>
+      <PaginationItem className={cn(page === 1 ? "underline text-primary" : "text-gray-400")}>
         <span onClick={()=>handlePage(1)}>1</span>
       </PaginationItem>
-      <PaginationItem className={cn(page === 2 ? "underline text-slate-950":"text-gray-400")}>
+      <PaginationItem className={cn(page === 2 ? "underline text-primary":"text-gray-400")}>
         <span onClick={()=> handlePage(2)} >
           2
         </span>

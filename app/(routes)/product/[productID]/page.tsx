@@ -68,10 +68,10 @@ const ProductIDPage = () => {
         <div className="flex space-x-2">
           {product.sizes && product.sizes.map((size,index)=>(
             <div key={index}>
-              <Button
+              <Button 
+              variant={"custom"}
               onClick={()=>setSelectedSize(size.id_item_detail)}
               className={cn([
-                "dark:text-white dark:border-2  dark:hover:text-white dark:border-white dark:hover:bg-slate-950",
                 isSelectedSize === size.id_item_detail && "bg-green-600 dark:bg-green-600"
                 ])}>
                 {size.id_size}

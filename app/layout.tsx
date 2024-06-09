@@ -21,7 +21,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider attribute='class' defaultTheme='system'>
             <Header/>
-            <div className=' mt-[114px]'>{children}</div>
+            <div className=' mt-[155px]'>{children}</div>
             <Footer/>
         </ThemeProvider>
       </body>

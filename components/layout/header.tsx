@@ -1,15 +1,26 @@
-import React from 'react'
+'use client'
+
+import {useEffect, useState} from 'react'
 import Logo from '@/components/logo'
 import SearchBar from '@/components/search-bar'
 import UserButton from '@/components/user-button'
 import CartButton from '@/components/cart/cart-button'
 import Sidebar from './sidebar/sidebar'
 import Darkmode from '../switch-darkmode'
+import { cn } from '@/lib/utils'
 
 const Header = () => {
-  return (
+    const [y, setY] = useState(0);
+
+    useEffect(() => {
+        window.addEventListener("scroll", () => setY(window.scrollY));
+      }, []);
     
-      <div className='w-full fixed top-0 bg-black py-6 px-4 md:px-8 lg:px-16 z-50'>
+  return (
+      <div className={
+        cn('w-full fixed top-0 py-6 px-4 md:px-8 lg:px-16 z-50',
+            y > 50 ? 'logoToUp' : 'logoToDown'
+      )}>
           <div className='flex items-center justify-between'>
               <Logo />
               <SearchBar />

@@ -66,7 +66,7 @@ const UserButton = () => {
             </DropdownMenuTrigger>
             <DropdownMenuContent className="p-0 pt-2">
                 <DropdownMenuLabel>
-                    <Link href={'/myaccount'}>My Account</Link>
+                    <Link href={'/myaccount'}>My Profile</Link>
                 </DropdownMenuLabel>
                 <DropdownMenuItem className="p-0">
                     <Button 
@@ -86,8 +86,7 @@ const UserButton = () => {
   return (
     <Sheet>
         <SheetTrigger>
-            <div className="bg-white dark:bg-slate-950 text-slate-950 dark:text-white border-slate-950
-             dark:border-white border rounded-full p-2 hover:opacity-80">
+            <div className=" text-primary  border-primary border rounded-full p-2 hover:opacity-80">
                 <User2Icon width={20} height={20} />
             </div>
         </SheetTrigger>

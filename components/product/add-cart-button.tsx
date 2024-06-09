@@ -24,9 +24,9 @@ const AddCartButton = ({id_item_detail} : { id_item_detail : number} ) => {
   return (
     <div>
         <Button
-        className='dark:hover:bg-slate-950 dark:text-white border-2 dark:border-white'
+        variant={"custom"}
       onClick={() => {
-        if (profile !== null){
+        if (profile){
           addHandle()
         }else{
           notification.open({

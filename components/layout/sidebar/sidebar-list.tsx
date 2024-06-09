@@ -31,7 +31,7 @@ const SidebarList = (
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger>
-        <div className='bg-white dark:bg-slate-950 text-slate-950 dark:text-white border-slate-950 dark:border-white border rounded-full p-2 hover:opacity-80'>
+        <div className=' text-primary  border-primary border rounded-full p-2 hover:opacity-80'>
           <Menu width={20} height={20}/>
         </div>
       </SheetTrigger>

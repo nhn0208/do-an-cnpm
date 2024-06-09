@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 const CheckoutButton = () => {
   return (
-    <Button>
+    <Button variant={'custom'}>
         <Link href="/checkout">Thanh Toán</Link>
     </Button>
   )

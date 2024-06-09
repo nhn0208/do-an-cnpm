@@ -18,7 +18,7 @@ const Darkmode = () => {
   return (
     <div className="flex items-center space-x-2">
     <Switch id="dark-mode" checked={isChecked} onCheckedChange={setChecked}/>
-    <Label htmlFor="dark-mode" className='text-white'>Dark Mode</Label>
+    <Label htmlFor="dark-mode" className='text-black dark:text-white'>Dark Mode</Label>
   </div>
   )
 }

@@ -97,3 +97,30 @@ html,body,:root {
     opacity: 1;
   }
 }
+
+.logoToUp {
+  transform: translateY(-155px);
+  animation: slideUp ease-in 0.3s;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-155px);
+  }
+}
+
+.logoToDown {
+  animation: slideDown ease-out 0.3s;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-155px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}

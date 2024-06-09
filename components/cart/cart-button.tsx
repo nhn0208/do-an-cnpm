@@ -25,8 +25,7 @@ const CartButton = () => {
     <Sheet open={openSheet} onOpenChange={setOpenSheet}>
         <SheetTrigger>
             <div 
-            className="bg-white dark:bg-slate-950 text-slate-950 dark:text-white border-slate-950
-             dark:border-white border rounded-full px-2 py-[6px] hover:opacity-80">
+            className=" text-primary  border-primary border rounded-full px-2 py-[6px] hover:opacity-80">
                 <ShoppingBag width={20} height={24} />
             </div>
         </SheetTrigger>

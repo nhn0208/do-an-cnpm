@@ -9,12 +9,6 @@ export const addProductId = async (id_item_detail :number) => {
   //const loginPath = 'auth/login'
   const cartPath = `cart/add/${id_item_detail}`
   try {
-    // const loginResponse = await httpRequest.post(loginPath,{
-    //   "email":"phammanhbeo2001@gmail.com",
-    //   "password":"123456"
-    // })
-    // console.log(loginResponse.data);
-
     const cartResponse = await httpRequest.post(cartPath)
     .then(()=>{
       notification.open({
@@ -24,11 +18,6 @@ export const addProductId = async (id_item_detail :number) => {
         type: 'success',
     })
     })
-    // console.log(cartResponse);
-    
-    // return cartResponse.data
-    
-    
   }catch ( error) {
   }
 }
