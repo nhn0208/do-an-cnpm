@@ -51,10 +51,16 @@ const Payment = () => {
 
     if ( invoice) {
       return (
-        <div className='w-full p-20'>
-          <h1>Đặt hàng thành công</h1>
-          <p>{invoice.data.description}</p>
-          <p>{invoice.data.address}</p>
+        <div className='w-full p-20 flex flex-col items-center space-y-4'>
+          <h1 className='text-2xl font-bold'>Đặt hàng thành công</h1>
+          <div className='w-1/2 flex justify-center space-x-8'>
+            <Button variant={"outline"}>
+              <Link href={'/'}>Về trang chủ</Link>
+            </Button>
+            <Button variant={"outline"}>
+              <Link href={'/invoice'}>Xem đơn hàng</Link>
+            </Button>
+          </div>
         </div>
       )
     }
@@ -90,7 +96,7 @@ const Payment = () => {
               </RadioGroup>
             </div>
             <div className='flex justify-between w-full pt-6'>
-              <Link href="/myaccount?menu=cart" className="text-blue-600 text-sm">Giỏ hàng</Link>
+              <Link href="/cart" className="text-blue-600 text-sm">Giỏ hàng</Link>
               <Button 
                 variant={"outline"} className='bg-blue-500 text-white p-6'
                 disabled={!completed}

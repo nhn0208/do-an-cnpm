@@ -5,7 +5,7 @@ export interface ProductProps  {
     id_origin?: number,
     id_brand?: number,
     name?: string,
-    image: string,
+    image?: string,
     description?: string,
     sizes?: {
         id_item_detail?: number,
@@ -40,9 +40,6 @@ export interface ProfileProps {
 
 export interface InvoiceProps {
     "id_invoice": number,
-    "id_customer": number,
-    "id_staff": number | null,
-    "id_status": number,
     "id_payment_method": number,
     "datetime": string,
     "ship_fee": number,
@@ -53,4 +50,14 @@ export interface InvoiceProps {
     "description": string,
     "name_status": string,
     "name_payment_method": string
+}
+
+export interface ItemInInvoiceProps {
+    "id_item_detail": number,
+    "id_invoice": number,
+    "quantity": number,
+    "unit_price": number,
+    "size": number,
+    "name": string,
+    "id_item": number
 }

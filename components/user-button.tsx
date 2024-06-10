@@ -66,7 +66,7 @@ const UserButton = () => {
             </DropdownMenuTrigger>
             <DropdownMenuContent className="p-0 pt-2">
                 <DropdownMenuLabel>
-                    <Link href={'/myaccount'}>My Profile</Link>
+                    <Link href={'/profile'}>My Profile</Link>
                 </DropdownMenuLabel>
                 <DropdownMenuItem className="p-0">
                     <Button 

@@ -53,7 +53,7 @@ const ProductIDPage = () => {
   return (
     <div className="w-full px-[100px] flex">
       <div className="w-1/2">
-        <Image src={product?.image} alt='' width={696} height={696} decoding="async" data-nimg="1"/>
+        <Image src={product?.image || '/google.png'} alt='' width={696} height={696} decoding="async" data-nimg="1"/>
       </div>
       <div className=" p-10 font-bold w-1/2 space-y-4 text-lg text-slate-950 dark:text-white">
         <h1 className=" text-2xl mb-4">{product.name}</h1>

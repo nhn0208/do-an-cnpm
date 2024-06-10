@@ -1,7 +1,9 @@
+'use client'
+
 import { CartProps } from '@/lib/interface';
 import { useEffect, useState } from 'react'
 import { fetchCart } from "@/app/api/cart/cart";
-import CartItem from '../cart/cart-item';
+import CartItem from './cart-item';
 import CheckoutButton from '../payment/checkout-button';
 
 const CartInAccount = () => {
@@ -15,7 +17,7 @@ const CartInAccount = () => {
   })
   return (
     <div className="w-full p-20 flex flex-col space-y-4">
-        <div className="w-full flex justify-center">
+        <div className="w-full flex flex-col items-center">
           {cartList && cartList.map((cart,index)=>(
                       <div key={index} className="w-1/2">
                           <CartItem name={cart.name} 
